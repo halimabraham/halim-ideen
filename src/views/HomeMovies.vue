@@ -1,14 +1,17 @@
 <template>
-    <h1>{{ msg }}</h1>
-    <button @click="mensaje('hola')">Click me</button>
+    <h1>MOVIES APP</h1>
+    <h3>You've searched:</h3>
+    <ul>
+        <li v-for="movie in searchHistory">{{ movie.title }}</li>
+    </ul>
 </template>
 
 <script setup>
 
-    const msg = 'Hellos'
+    import { useMoviesStore } from '@/stores/movies'
+    import { storeToRefs } from "pinia"
 
-    const mensaje = (mensaje) => {
-        console.log(mensaje)
-    }
+    const { searchHistory } = storeToRefs(useMoviesStore())
+    const store = useMoviesStore()
 
 </script>
